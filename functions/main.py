@@ -4,7 +4,7 @@ import google_crc32c
 
 initialize_app()
 
-@https_fn.on_request()
+@https_fn.on_request(region="us-east1")
 def last_word(req: https_fn.Request) -> https_fn.Response:
     if req.method == "OPTIONS":
         headers = {
