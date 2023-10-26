@@ -48,5 +48,5 @@ jobs:
       
       - name: "Deploy Firebase Functions"
         run: |
-          npm install firebase-tools
+          npm install -g firebase-tools
           firebase deploy --non-interactive
