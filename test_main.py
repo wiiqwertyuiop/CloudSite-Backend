@@ -1,6 +1,7 @@
 import unittest
-from unittest.mock import patch
-from functions.main import last_word
+from unittest.mock import Mock, patch
+patch('firebase_functions.scheduler_fn.on_schedule', lambda schedule, region : (lambda x : x)).start()
+from functions.main import last_word, daily_word
 
 class mock__Request():
    method = ""
@@ -10,6 +11,12 @@ class mock__Request():
         return mock__Request.args.word
 
 class TestCloudFunction(unittest.TestCase):
+
+    @patch('firebase_admin.firestore.client')
+    def test_daily_word(self, mock):
+        daily_word(Mock())
+        mock.return_value.collection.return_value.document.return_value.set.assert_called()
+
     def test_options(self):
         req=mock__Request
         req.method="OPTIONS"
