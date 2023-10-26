@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+firebase_functions = unittest.mock.Mock()
 from functions.main import last_word
 
 class mock__Request():
