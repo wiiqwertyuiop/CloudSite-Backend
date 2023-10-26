@@ -1,9 +1,5 @@
-import sys
 import unittest
-from unittest.mock import Mock, patch
-sys.modules['firebase_functions'] = Mock()
-sys.modules['firebase_admin'] = Mock()
-sys.modules['google_crc32c'] = Mock()
+from unittest.mock import patch
 from functions.main import last_word
 
 class mock__Request():
