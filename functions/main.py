@@ -1,9 +1,16 @@
-from firebase_functions import https_fn
+from firebase_functions import https_fn, scheduler_fn
 from firebase_admin import initialize_app, firestore
 import google_crc32c
 
 initialize_app()
 
+# Run once a day to get a new word
+@scheduler_fn.on_schedule(schedule="every day 14:00", region="us-east1")
+def daily_word(event: scheduler_fn.ScheduledEvent) -> None:
+    firestore_client: google_crc32c.cloud.firestore.Client = firestore.client()
+    firestore_client.collection("messages").document("1").set({"word": "dog"})
+
+# Retrieve word
 @https_fn.on_request(region="us-east1")
 def last_word(req: https_fn.Request) -> https_fn.Response:
     if req.method == "OPTIONS":
