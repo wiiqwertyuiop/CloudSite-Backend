@@ -5,10 +5,10 @@ import google_crc32c
 initialize_app()
 
 # Run once a day to get a new word
-@scheduler_fn.on_schedule(schedule="every day 18:15", region="us-east1")
+@scheduler_fn.on_schedule(schedule="every day 04:00", region="us-east1")
 def daily_word(event: scheduler_fn.ScheduledEvent) -> None:
     firestore_client: google_crc32c.cloud.firestore.Client = firestore.client()
-    firestore_client.collection("messages").document("1").set({"word": "dog"})
+    firestore_client.collection("messages").document("1").set({"word": "cat"})
 
 # Retrieve word
 @https_fn.on_request(region="us-east1")

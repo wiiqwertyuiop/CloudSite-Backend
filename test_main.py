@@ -10,7 +10,6 @@ class mock__Request():
         return mock__Request.args.word
 
 class TestCloudFunction(unittest.TestCase):
-
     def test_options(self):
         req=mock__Request
         req.method="OPTIONS"

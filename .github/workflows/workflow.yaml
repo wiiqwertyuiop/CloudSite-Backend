@@ -25,6 +25,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -m pip install coverage
 
       - name: 'Run tests'
-        run: python test_main.py
+        run: |
+          coverage run test_main.py
+          coverage report -m --fail-under=100
