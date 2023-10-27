@@ -52,4 +52,4 @@ jobs:
           python -m venv functions/venv
           source functions/venv/bin/activate
           python -m pip install -r functions/requirements.txt
-          firebase deploy --non-interactive
+          firebase deploy --only functions --non-interactive
