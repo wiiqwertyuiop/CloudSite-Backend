@@ -1,8 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
 patch('firebase_functions.scheduler_fn.on_schedule', lambda schedule, region : (lambda x : x)).start()
-from functions.last_word import last_word
-from functions.daily_word import daily_word
+from functions.main import last_word, daily_word
 
 class mock__Request():
    method = ""
