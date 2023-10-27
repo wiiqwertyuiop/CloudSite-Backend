@@ -48,9 +48,9 @@ jobs:
       
       - name: "Deploy Firebase Functions"
         run: |
-          npm install -g firebase-tools@12.0.1
+          npm install -g firebase-tools
           python -m venv functions/venv
           source functions/venv/bin/activate
           pip install -r functions/requirements.txt
-          npm install -g firebase_functions
+          python -m pip install firebase_functions
           firebase deploy --only functions --non-interactive
