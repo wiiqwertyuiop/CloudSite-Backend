@@ -51,4 +51,8 @@ jobs:
           npm install -g firebase-tools
           python -m venv functions/venv
           cd ./functions/venv/bin
-          ls
+          ./activate
+          cd ../../
+          pip install -r requirements.txt
+          cd ../
+          firebase deploy --non-interactive
